@@ -4,6 +4,7 @@
   "description": "A metalsmith plugin to input authors information in collections.",
   "main": "src/plugin.js",
   "scripts": {
+    "grunt": "grunt",
     "test": "grunt test"
   },
   "repository": {
@@ -17,9 +18,24 @@
     "authors"
   ],
   "author": "Almir Filho <almir@almirfilho.com>",
+  "contributors": [],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/almirfilho/metalsmith-author/issues"
   },
-  "homepage": "https://github.com/almirfilho/metalsmith-author#readme"
+  "homepage": "https://github.com/almirfilho/metalsmith-author#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "grunt": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-mocha-test": "^0.12.7",
+    "load-grunt-tasks": "^3.5.0",
+    "metalsmith": "^2.1.0",
+    "metalsmith-collections": "^0.7.0",
+    "mocha": "^2.4.5"
+  },
+  "engines": {
+    "node": ">=5"
+  }
 }
