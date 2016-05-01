@@ -1,0 +1,25 @@
+{
+  "name": "metalsmith-author",
+  "version": "0.0.1",
+  "description": "A metalsmith plugin to input authors information in collections.",
+  "main": "src/plugin.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/almirfilho/metalsmith-author.git"
+  },
+  "keywords": [
+    "metalsmith",
+    "plugin",
+    "author",
+    "authors"
+  ],
+  "author": "Almir Filho <almir@almirfilho.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/almirfilho/metalsmith-author/issues"
+  },
+  "homepage": "https://github.com/almirfilho/metalsmith-author#readme"
+}
