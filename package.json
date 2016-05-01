@@ -1,7 +1,7 @@
 {
   "name": "metalsmith-author",
   "version": "0.0.1",
-  "description": "A metalsmith plugin to input authors information in collections.",
+  "description": "A metalsmith plugin to input authors information in collection files.",
   "main": "src/plugin.js",
   "scripts": {
     "grunt": "grunt",
