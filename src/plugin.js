@@ -18,10 +18,14 @@ module.exports = options => {
 
     const authors = options.authors || defaults.authors;
 
+    if(!(authors instanceof Object))
+      throw new Error(`the 'authors' option must be an object.`);
+
     metadata.collections[options.collection].forEach(file => {
       if(file.author in authors) file.author = authors[file.author];
     });
 
+    metalsmith.metadata({ authors: authors });
     done();
   };
 };

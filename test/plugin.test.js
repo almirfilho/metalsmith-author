@@ -23,20 +23,27 @@ describe('Initialization', () => {
 
   it('should require collections to be configured', () => {
     metal._metadata = {};
-    var call = feed({ collection: 'name' }).bind(null, [], metal, () => {});
+    const call = feed({ collection: 'name' }).bind(null, [], metal, () => {});
     expect(call).to.throw(Error);
   });
 
   it('should throw error if collection doesnt exist', () => {
     metal._metadata.collections = {};
-    var call = feed({ collection: 'posts' }).bind(null, [], metal, () => {});
+    const call = feed({ collection: 'posts' }).bind(null, [], metal, () => {});
     expect(call).to.throw(Error);
   });
 
   it('should not throw error if collection exist', () => {
     metal._metadata.collections = { articles: [] };
-    var call = feed({ collection: 'articles' }).bind(null, [], metal, () => {});
+    const call = feed({ collection: 'articles' }).bind(null, [], metal, () => {});
     expect(call).not.to.throw(Error);
+  });
+
+  it('should throw error if authors option is not an object', () => {
+    metal._metadata.collections = { posts: [] };
+    const options = { collection: 'posts', authors: 'not an object' };
+    const call = feed(options).bind(null, [], metal, () => {});
+    expect(call).to.throw(Error);
   });
 });
 
@@ -68,10 +75,8 @@ describe('Generation', () => {
     };
 
     metalfeed(options).build((err, files) => {
-      expect(files['post1.html']).to.have.deep.property('author');
-      expect(files['post1.html'].author).to.deep.equal({ name: 'John Lennon' });
-      expect(files['post2.html']).to.have.deep.property('author');
-      expect(files['post2.html'].author).to.deep.equal({ name: 'Paul McCartney' });
+      expect(files['post1.html']).to.have.property('author').to.deep.equal({ name: 'John Lennon' });
+      expect(files['post2.html']).to.have.property('author').to.deep.equal({ name: 'Paul McCartney' });
       done();
     });
   });
@@ -85,10 +90,24 @@ describe('Generation', () => {
     };
 
     metalfeed(options).build((err, files) => {
-      expect(files['post1.html']).to.have.deep.property('author');
-      expect(files['post1.html'].author).to.deep.equal({ name: 'John Lennon' });
-      expect(files['post2.html']).to.have.deep.property('author');
-      expect(files['post2.html'].author).to.deep.equal('paul');
+      expect(files['post1.html']).to.have.property('author').to.deep.equal({ name: 'John Lennon' });
+      expect(files['post2.html']).to.have.property('author').to.equal('paul');
+      done();
+    });
+  });
+
+  it('should set authors in metalsmith global metadata', done => {
+    var metadata;
+    const options = {
+      collection: 'posts',
+      authors: { john: 'John Lennon' }
+    };
+
+    metalfeed(options).use((files, metal, metaldone) => {
+      metadata = metal.metadata();
+      metaldone();
+    }).build((err, files) => {
+      expect(metadata).to.have.property('authors').to.deep.equal({ john: 'John Lennon' });
       done();
     });
   });
