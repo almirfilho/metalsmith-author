@@ -107,6 +107,7 @@ describe('Generation', () => {
       metadata = metal.metadata();
       metaldone();
     }).build((err, files) => {
+      expect(metadata).to.have.property('collections');
       expect(metadata).to.have.property('authors').to.deep.equal({ john: 'John Lennon' });
       done();
     });

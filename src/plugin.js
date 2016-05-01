@@ -25,7 +25,7 @@ module.exports = options => {
       if(file.author in authors) file.author = authors[file.author];
     });
 
-    metalsmith.metadata({ authors: authors });
+    metadata.authors = authors;
     done();
   };
 };
