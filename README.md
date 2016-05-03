@@ -60,9 +60,6 @@ These files will be processed to be as:
 }
 ```
 
-So you can just use `author.name` (or whatever you want) to render the author's
-name in templates.
-
 
 ## Installation
 
@@ -101,6 +98,18 @@ metalsmith('working/dir')
 
 Remember to the set the `author` identifier property in collection files with
 one of these you passed to the plugin.
+
+
+### Render a single file author
+
+Now you can just use something like `{{ author.name }}` (or whatever you want) to
+render the file (post) author's name in your post template.
+
+
+### Render all authors
+
+Complementarily, you can access all authors globally inside any template as
+well through the `authors` variable, i.e. `{{ authors.john.name }}`.
 
 
 ## Options
