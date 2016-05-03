@@ -112,4 +112,22 @@ describe('Generation', () => {
       done();
     });
   });
+
+  it('should set authors from metalsmith metadata', done => {
+    var metalpipeline = metalsmith('test').source('fixtures');
+    var newmetadata = metalpipeline.metadata();
+    newmetadata.authors = {
+      john: { name: 'John Lennon' },
+      paul: { name: 'Paul McCartney' }
+    };
+
+    metalpipeline.metadata(newmetadata)
+      .use(collections({ posts: '*.html' }))
+      .use(author({ collection: 'posts' }))
+      .build((err, files) => {
+        expect(files['post1.html']).to.have.property('author').to.deep.equal({ name: 'John Lennon' });
+        expect(files['post2.html']).to.have.property('author').to.deep.equal({ name: 'Paul McCartney' });
+        done();
+      });
+  });
 });

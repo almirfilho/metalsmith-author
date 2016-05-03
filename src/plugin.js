@@ -16,7 +16,7 @@ module.exports = options => {
     if(!(options.collection in metadata.collections))
       throw new Error(`the collection '${options.collection}' does not exist.`);
 
-    const authors = options.authors || defaults.authors;
+    const authors = options.authors || metadata.authors || defaults.authors;
 
     if(!(authors instanceof Object))
       throw new Error(`the 'authors' option must be an object.`);
@@ -25,7 +25,7 @@ module.exports = options => {
       if(file.author in authors) file.author = authors[file.author];
     });
 
-    metadata.authors = authors;
+    if(!metadata.authors) metadata.authors = authors;
     done();
   };
 };
