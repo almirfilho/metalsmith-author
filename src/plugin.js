@@ -1,5 +1,6 @@
 const defaults = {
-  authors: {}
+  authors: {},
+  metadataFrom: 'authors'
 };
 
 
@@ -16,7 +17,8 @@ module.exports = options => {
     if(!(options.collection in metadata.collections))
       throw new Error(`the collection '${options.collection}' does not exist.`);
 
-    const authors = options.authors || metadata.authors || defaults.authors;
+    const metadataFrom = options.metadataFrom || defaults.metadataFrom;
+    const authors = options.authors || metadata[metadataFrom] || defaults.authors;
 
     if(!(authors instanceof Object))
       throw new Error(`the 'authors' option must be an object.`);
