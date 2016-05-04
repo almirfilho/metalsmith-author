@@ -1,4 +1,4 @@
-# metalsmith-author
+# metalsmith-author [![Build Status][travis-badge]][travis]
 
 > A [metalsmith][metal] plugin to input authors information in collection files.
 
@@ -171,6 +171,8 @@ Always implement tests for whatever you're adding to the project. Thanks!
 [MIT][license] © Almir Filho
 
 
+[travis]: https://travis-ci.org/almirfilho/metalsmith-author
+[travis-badge]: https://travis-ci.org/almirfilho/metalsmith-author.svg?branch=master
 [metal]: http://www.metalsmith.io/
 [collections]: https://github.com/segmentio/metalsmith-collections
 [license]: https://github.com/almirfilho/metalsmith-feed-atom/blob/master/LICENSE.md
