@@ -102,8 +102,8 @@ one of these you passed to the plugin.
 
 ### Render a single file author
 
-Now you can just use something like `{{ author.name }}` (or whatever you want) to
-render the file (post) author's name in your post template.
+Now you can just use something like `{{ author.name }}` (or whatever you want)
+to render the file (post) author's name in your post template.
 
 
 ### Render all authors
@@ -114,11 +114,24 @@ well through the `authors` variable, i.e. `{{ authors.john.name }}`.
 
 ## Options
 
-- `collection` __string__ _required_: Name of the configured
-  metalsmith-collection to process files from.
-- `authors` __object__ _optional_: Object containing all authors' information.
-  It can contain whatever you want. Despite it isn't a required option, you must
-  provide it in order to input new info in processed files.
+#### `collection` __string__
+
+_Required_. Name of the configured metalsmith-collection to process files from
+(see the usage example above).
+
+
+#### `authors` __object__
+
+_Optional_. Object containing all authors' metadata. It can contain whatever you
+want. Despite it isn't a required option, you must provide it in order to input
+new info in processed files (see the usage example above).
+
+
+#### `metadataFrom` __string__
+
+_Optional_. Specify where the plugin can take the authors' metadata from. It
+looks for data in metalsmith's global metadata scope. You can also pass a path,
+like `'some.key'`.
 
 
 ## Contributing
