@@ -148,4 +148,24 @@ describe('Generation', () => {
         done();
       });
   });
+
+  it('should set authors from custom metalsmith nested metadata', done => {
+    var metalpipeline = metalsmith('test').source('fixtures');
+    var newmetadata = metalpipeline.metadata();
+    newmetadata.players = {
+      chess: {
+        john: { name: 'Garry Kasparov' },
+        paul: { name: 'Anatoly Karpov' }
+      }
+    };
+
+    metalpipeline.metadata(newmetadata)
+      .use(collections({ posts: '*.html' }))
+      .use(author({ collection: 'posts', metadataFrom: 'players.chess' }))
+      .build((err, files) => {
+        expect(files['post1.html']).to.have.property('author').to.deep.equal({ name: 'Garry Kasparov' });
+        expect(files['post2.html']).to.have.property('author').to.deep.equal({ name: 'Anatoly Karpov' });
+        done();
+      });
+  });
 });

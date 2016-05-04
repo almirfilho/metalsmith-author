@@ -1,3 +1,6 @@
+const _ = require('lodash');
+
+
 const defaults = {
   authors: {},
   metadataFrom: 'authors'
@@ -18,7 +21,7 @@ module.exports = options => {
       throw new Error(`the collection '${options.collection}' does not exist.`);
 
     const metadataFrom = options.metadataFrom || defaults.metadataFrom;
-    const authors = options.authors || metadata[metadataFrom] || defaults.authors;
+    var authors = options.authors || get(metadata, metadataFrom) || defaults.authors;
 
     if(!(authors instanceof Object))
       throw new Error(`the 'authors' option must be an object.`);
@@ -31,3 +34,6 @@ module.exports = options => {
     done();
   };
 };
+
+// returns value at path from obj, or undefined
+const get = (obj, path) => _.head(_.at(obj, path));
