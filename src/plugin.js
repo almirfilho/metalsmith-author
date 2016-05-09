@@ -1,4 +1,5 @@
-const _ = require('lodash');
+const at = require('lodash/at');
+const head = require('lodash/head');
 
 
 const defaults = {
@@ -21,10 +22,10 @@ module.exports = options => {
       throw new Error(`the collection '${options.collection}' does not exist.`);
 
     const metadataFrom = options.metadataFrom || defaults.metadataFrom;
-    var authors = options.authors || get(metadata, metadataFrom) || defaults.authors;
+    const authors = options.authors || get(metadata, metadataFrom) || defaults.authors;
 
     if(!(authors instanceof Object))
-      throw new Error(`the 'authors' option must be an object.`);
+      throw new Error('the `authors` option must be an object.');
 
     metadata.collections[options.collection].forEach(file => {
       if(file.author in authors) file.author = authors[file.author];
@@ -36,4 +37,4 @@ module.exports = options => {
 };
 
 // returns value at path from obj, or undefined
-const get = (obj, path) => _.head(_.at(obj, path));
+const get = (obj, path) => head(at(obj, path));
