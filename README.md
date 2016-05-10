@@ -177,4 +177,4 @@ Always implement tests for whatever you're adding to the project. Thanks!
 [npm-badge]: https://img.shields.io/npm/v/metalsmith-author.svg?maxAge=2592000
 [metal]: http://www.metalsmith.io/
 [collections]: https://github.com/segmentio/metalsmith-collections
-[license]: https://github.com/almirfilho/metalsmith-feed-atom/blob/master/LICENSE.md
+[license]: https://github.com/almirfilho/metalsmith-author/blob/master/LICENSE
