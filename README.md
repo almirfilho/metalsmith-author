@@ -2,7 +2,7 @@
 
 > A [metalsmith][metal] plugin to input authors information in collection files.
 
-Specially useful for documents (files) with different authors.
+Specially useful for documents (files) with different authors.  
 Requires [metalsmith-collections][collections] plugin to work.
 
 
@@ -114,24 +114,27 @@ well through the `authors` variable, i.e. `{{ authors.john.name }}`.
 
 ## Options
 
-#### `collection` __string__
+#### `collection`
 
-_Required_. Name of the configured metalsmith-collection to process files from
-(see the usage example above).
-
-
-#### `authors` __object__
-
-_Optional_. Object containing all authors' metadata. It can contain whatever you
-want. Despite it isn't a required option, you must provide it in order to input
-new info in processed files (see the usage example above).
+Type: __String__ _(Required)_  
+Name of the configured metalsmith-collection to process files from (see the
+usage example above).
 
 
-#### `metadataFrom` __string__
+#### `authors`
 
-_Optional_. Specify where the plugin can take the authors' metadata from. It
-looks for data in metalsmith's global metadata scope. You can also pass a path,
-like `'some.key'`.
+Type: __Object__ _(Optional)_  
+Object containing all authors' metadata. It can contain whatever you want.
+Despite it isn't a required option, you must provide it in order to input new
+info in processed files (see the usage example above).
+
+
+#### `metadataFrom`
+
+Type: __String__ _(Optional)_  
+Specify where the plugin can take the authors' metadata from. It looks for data
+in metalsmith's global metadata scope. You can also pass a path, like
+`'some.key'`.
 
 
 ## Contributing
@@ -174,7 +177,7 @@ Always implement tests for whatever you're adding to the project. Thanks!
 [travis]: https://travis-ci.org/almirfilho/metalsmith-author
 [travis-badge]: https://travis-ci.org/almirfilho/metalsmith-author.svg?branch=master
 [npm]: https://www.npmjs.com/package/metalsmith-author
-[npm-badge]: https://img.shields.io/npm/v/metalsmith-author.svg?maxAge=2592000
+[npm-badge]: https://img.shields.io/npm/v/metalsmith-author.svg?maxAge=3600
 [metal]: http://www.metalsmith.io/
 [collections]: https://github.com/segmentio/metalsmith-collections
 [license]: https://github.com/almirfilho/metalsmith-author/blob/master/LICENSE
